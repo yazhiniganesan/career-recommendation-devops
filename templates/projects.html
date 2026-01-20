@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recommended_role }} – Project Ideas{% endblock %}
+
+{% block content %}
+<div class="container"
+     style="background:#fff;
+            padding:30px;
+            border-radius:20px;
+            max-width:800px;
+            margin:35px auto;
+            box-shadow:0 8px 30px rgba(0,0,0,0.12);
+            font-family:'Poppins', Arial, sans-serif;
+            text-align:center;">
+
+  <!-- Centered Role Title -->
+  <h2 style="color:#8b0047; margin-bottom:15px; font-weight:700;">
+    {{ recommended_role }} – Project Ideas
+  </h2>
+
+  <p style="color:#444; margin-bottom:25px;">
+    Use these project ideas to practice skills and build a strong portfolio.
+  </p>
+
+  {% if recommended_projects %}
+    <ul style="list-style:none; padding:0; margin:0;">
+      {% for project in recommended_projects %}
+        <li style="margin-bottom:12px;">
+          <a href="{{ url_for('project_detail', project_name=project) }}"
+             style="display:block;
+                    padding:12px 14px;
+                    border-radius:10px;
+                    background:#fdf2f8;
+                    border:2px solid #8b0047;
+                    color:#8b0047;
+                    font-weight:600;
+                    text-decoration:none;
+                    transition:0.3s;">
+             {{ project }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="color:#666;">Project ideas for this role will be added soon.</p>
+  {% endif %}
+
+  <!-- Back Button (inside box & centered) -->
+  <div style="margin-top:30px;">
+    <a href="{{ url_for('result') }}"
+       style="display:inline-block;
+              padding:10px 22px;
+              border-radius:10px;
+              background:#8b0047;
+              color:#fff;
+              text-decoration:none;
+              font-weight:600;">
+      ⬅ Back
+    </a>
+  </div>
+
+</div>
+{% endblock %}

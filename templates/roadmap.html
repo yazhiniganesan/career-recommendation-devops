@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recommended_role }} Roadmap{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:900px; margin:35px auto; text-align:center;">
+   <!-- Centered Role -->
+  <h2 style="color:#8b0047; margin-bottom:10px; font-weight:700;">
+    {{ recommended_role }}
+  </h2>
+
+
+  <img src="{{ url_for('static', filename='images/s.png') }}"
+       alt="{{ recommended_role }} Roadmap"
+       style="max-width:100%; border-radius:20px; box-shadow:0 8px 30px rgba(0,0,0,0.15);" />
+
+  <div style="margin-top:25px;">
+     <!-- Back Button (inside box & centered) -->
+  <a href="{{ url_for('result') }}"
+     style="display:inline-block; margin-bottom:25px; padding:8px 18px;
+            border-radius:8px; background:#8b0047; color:#fff;
+            text-decoration:none; font-weight:600;">
+    Back
+  </a>
+  </div>
+</div>
+{% endblock %}

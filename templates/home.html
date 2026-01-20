@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - AI Career Recommendation
+{% endblock %}
+
+{% block content %}
+<div class="header-content" style="padding:80px 20px; max-width:600px; margin:auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <p>THE NEXT-GEN</p>
+  <h1 style="font-size:48px; color:#1f2937; margin-bottom:15px;">Discover your dream career with AI</h1>
+  <p style="font-size:18px; color:#4b5563; line-height:1.6;">
+    Answer simple questions and let technology guide your path to a fulfilling and successful career!
+  </p>
+  {% if logged_in %}
+    <a href="{{ url_for('questionnaire') }}" class="btn-primary">Chase Your Dream</a>
+  {% else %}
+    <a href="{{ url_for('login_view') }}" class="btn-primary">Sign In to Start</a>
+  {% endif %}
+</div>
+{% endblock %}

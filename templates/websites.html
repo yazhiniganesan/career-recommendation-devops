@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recommended_role }} – Learning Websites{% endblock %}
+
+{% block content %}
+
+  <!-- Role Title -->
+  <h2 style="color:#8b0047; margin-bottom:10px; font-weight:700; text-align:center;">
+    {{ recommended_role }}
+  </h2><br><br>
+
+  
+
+  <!-- Carousel -->
+<div id="roleCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="max-width:1200px; margin: 0 auto;">
+  <div class="carousel-inner" style="border-radius: 20px; overflow: hidden;">
+    {% for img_url in carousel_images %}
+    <div class="carousel-item {% if loop.first %}active{% endif %}">
+      <img src="{{ img_url }}" 
+           class="d-block w-100" 
+           style="border-radius: 20px; max-height: 400px; object-fit: cover;" 
+           alt="Image {{ loop.index }}">
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#roleCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#roleCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Punch Line -->
+  <p style="font-size:18px; color:#8b0047; font-weight:600; margin-bottom:20px; text-align:center;">
+    <b>{{ punch_line }}</b>
+  </p>
+
+ 
+
+  <!-- Important Points -->
+  <div style="margin-top:20px; text-align:left; max-width:800px; margin-left:auto; margin-right:auto;">
+    <h3 style="color:#8b0047; font-weight:700;">Important Points</h3>
+    <ul style="color:#444; line-height:1.8;">
+      {% for point in points %}
+        <li>{{ point }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Back Button -->
+  <div style="text-align:center; margin-top:25px;">
+    <a href="{{ url_for('result') }}"
+       style="display:inline-block; padding:8px 18px;
+              border-radius:8px; background:#8b0047; color:#fff;
+              text-decoration:none; font-weight:600;">
+      Back
+    </a>
+  </div>
+
+{% endblock %}

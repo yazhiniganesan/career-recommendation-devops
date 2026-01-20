@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recommended_role }} – Video Tutorials{% endblock %}
+
+{% block content %}
+<div class="container" style="background:#fff; padding:30px 30px; border-radius:20px; max-width:800px; margin:35px auto; box-shadow:0 8px 30px rgba(0,0,0,0.12); font-family:'Poppins', Arial, sans-serif;">
+
+  <!-- Header -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+    
+    <!-- Centered Role -->
+  <h2 style="color:#8b0047; margin-bottom:10px; font-weight:700;">
+    {{ recommended_role }}
+  </h2>
+
+  </div>
+
+  <p style="color:#444; margin-bottom:20px;">
+    Watch these curated videos to build your core skills for this role.
+  </p>
+
+  {% if recommended_videos %}
+    <ul style="list-style:none; padding:0; margin:0;">
+      {% for video in recommended_videos %}
+        <li style="margin-bottom:15px;">
+          <a href="{{ video.url }}" target="_blank"
+             style="display:block; padding:14px 16px; border-radius:12px; background:#fff4fa;
+                    border:2px solid #8b0047; text-decoration:none; color:#8b0047; font-weight:500;">
+            🎥 {{ video.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="color:#666;">Video tutorials for this role will be added soon.</p>
+  {% endif %}
+
+   <!-- Back Button (inside box & centered) -->
+  <a href="{{ url_for('result') }}"
+     style="display:inline-block; margin-bottom:25px; padding:8px 18px;
+            border-radius:8px; background:#8b0047; color:#fff;
+            text-decoration:none; font-weight:600;">
+    Back
+  </a>
+
+</div>
+{% endblock %}

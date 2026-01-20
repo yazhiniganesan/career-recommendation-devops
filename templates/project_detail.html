@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project_name }}{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:900px; margin:35px auto; padding:20px;">
+  
+  <!-- Title Box -->
+  <div style="background: linear-gradient(135deg, #8b0047, #a855f7); color:white; padding:25px; border-radius:20px; text-align:center; margin-bottom:30px; box-shadow:0 10px 40px rgba(139,0,71,0.3);">
+    <h1 style="font-size:2.2rem; font-weight:700; margin:0;">{{ project_name }}</h1>
+  </div>
+
+  <!-- Description Box -->
+  <div style="background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:30px; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.1); margin-bottom:30px;">
+    <h3 style="color:#8b0047; margin-bottom:15px;">Project Description</h3>
+    <p style="font-size:1.1rem; line-height:1.8; color:#333;">{{ description }}</p>
+  </div>
+
+  <!-- Steps Box -->
+  <div style="background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:30px; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.1); margin-bottom:30px;">
+    <h3 style="color:#8b0047; margin-bottom:20px;">Steps to Build</h3>
+    <ol style="font-size:1.1rem; line-height:1.8; color:#333; padding-left:25px;">
+      {% for step in steps %}
+        <li style="margin-bottom:12px;">{{ step }}</li>
+      {% endfor %}
+    </ol>
+  </div>
+
+  <!-- GitHub Link Box -->
+  <div style="background:rgba(34,197,94,0.1); padding:20px; border-radius:20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.1); margin-bottom:30px;">
+    <a href="{{ github }}" target="_blank" 
+       style="display:inline-block; background:linear-gradient(135deg, #10b981, #059669); color:white; padding:15px 30px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.1rem; box-shadow:0 10px 30px rgba(16,185,129,0.4);">
+      🔗 View Sample GitHub Project
+    </a>
+  </div>
+
+  <!-- Centered Back Button -->
+  <div style="text-align:center;">
+    <a href="{{ url_for('projects') }}" 
+       style="display:inline-block; background:linear-gradient(135deg, #8b0047, #a855f7); color:white; padding:15px 40px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.1rem; box-shadow:0 10px 30px rgba(139,0,71,0.4); transition:all 0.3s ease;">
+      ⬅ Back to Projects
+    </a>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Your Career Recommendations{% endblock %}
+
+{% block content %}
+<div class="container" style="background: #fff; padding: 40px 30px; border-radius: 20px; max-width: 800px; margin: 35px auto; box-shadow: 0 10px 40px rgba(139,0,71,0.15); font-family: 'Poppins', Arial, sans-serif;">
+  
+  <!-- Role Header -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="color: #8b0047; font-size: 2.5rem; font-weight: 700; margin-bottom: 15px;">
+      {{ recommended_role }}
+    </h1>
+    <p style="color: #666; font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+      {{ description }}
+    </p>
+  </div>
+
+  <!-- Option Cards - One by One Layout -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px;">
+    
+    <!-- Roadmap Card -->
+    <a href="{{ url_for('roadmap') }}" class="option-card" style="
+      background: linear-gradient(135deg, #fff4fa 0%, #f8e8f0 100%);
+      padding: 35px 25px; 
+      border-radius: 20px; 
+      text-decoration: none; 
+      text-align: center; 
+      border: 3px solid #8b0047; 
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(139,0,71,0.1);
+    "
+      onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(139,0,71,0.2)'"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(139,0,71,0.1)'">
+      <div style="font-size: 3rem; margin-bottom: 15px;">📋</div>
+      <h3 style="color: #8b0047; font-size: 1.4rem; font-weight: 600; margin: 0 0 12px 0;">Learning Roadmap</h3>
+      <p style="color: #666; font-size: 1rem; margin: 0; line-height: 1.5;">
+        Complete step-by-step learning path tailored for your role
+      </p>
+    </a>
+
+    <!-- Videos Card -->
+    <a href="{{ url_for('videos') }}" class="option-card" style="
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 35px 25px; 
+      border-radius: 20px; 
+      text-decoration: none; 
+      text-align: center; 
+      border: 3px solid #8b0047; 
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(139,0,71,0.1);
+    "
+      onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(139,0,71,0.2)'"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(139,0,71,0.1)'">
+      <div style="font-size: 3rem; margin-bottom: 15px;">🎥</div>
+      <h3 style="color: #8b0047; font-size: 1.4rem; font-weight: 600; margin: 0 0 12px 0;">Video Tutorials</h3>
+      <p style="color: #666; font-size: 1rem; margin: 0; line-height: 1.5;">
+        Handpicked video tutorials to get you started quickly
+      </p>
+    </a>
+
+    <!-- Projects Card -->
+    <a href="{{ url_for('projects') }}" class="option-card" style="
+      background: linear-gradient(135deg, #f0fff4 0%, #d4f4e0 100%);
+      padding: 35px 25px; 
+      border-radius: 20px; 
+      text-decoration: none; 
+      text-align: center; 
+      border: 3px solid #8b0047; 
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(139,0,71,0.1);
+    "
+      onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(139,0,71,0.2)'"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(139,0,71,0.1)'">
+      <div style="font-size: 3rem; margin-bottom: 15px;">🚀</div>
+      <h3 style="color: #8b0047; font-size: 1.4rem; font-weight: 600; margin: 0 0 12px 0;">Project Ideas</h3>
+      <p style="color: #666; font-size: 1rem; margin: 0; line-height: 1.5;">
+        Practical projects to build your portfolio and skills
+      </p>
+    </a>
+
+    <!-- Websites Card -->
+    <a href="{{ url_for('websites') }}" class="option-card" style="
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      padding: 35px 25px; 
+      border-radius: 20px; 
+      text-decoration: none; 
+      text-align: center; 
+      border: 3px solid #8b0047; 
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(139,0,71,0.1);
+    "
+      onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(139,0,71,0.2)'"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(139,0,71,0.1)'">
+      <div style="font-size: 3rem; margin-bottom: 15px;">🌐</div>
+      <h3 style="color: #8b0047; font-size: 1.4rem; font-weight: 600; margin: 0 0 12px 0;">Learning Websites</h3>
+      <p style="color: #666; font-size: 1rem; margin: 0; line-height: 1.5;">
+        Best online platforms and courses for your career path
+      </p>
+    </a>
+  </div>
+
+  <!-- Back to Questionnaire Button -->
+  <div style="text-align: center; margin-top: 50px;">
+    <a href="{{ url_for('questionnaire') }}" class="btn" style="
+      background: #8b0047; 
+      color: white; 
+      padding: 15px 40px; 
+      border-radius: 12px; 
+      text-decoration: none; 
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    "
+      onmouseover="this.style.background='#6f0038'; this.style.transform='translateY(-2px)'"
+      onmouseout="this.style.background='#8b0047'; this.style.transform='translateY(0)'">
+      Take Quiz Again
+    </a>
+  </div>
+
+</div>
+{% endblock %}
