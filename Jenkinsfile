@@ -11,14 +11,13 @@ pipeline {
         stage('Clone Code') {
             steps {
                 git branch: 'main',
-                credentialsId: 'github-creds',
                 url: 'https://github.com/yazhiniganesan/career-recommendation-devops.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
             }
         }
 
