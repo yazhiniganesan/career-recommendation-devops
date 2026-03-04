@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "career-app"
+        DOCKER_REPO="yazhiniganesan/career-app"
         CONTAINER_NAME = "career-container"
     }
 
@@ -11,6 +12,21 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh 'docker build -t $IMAGE_NAME .'
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh '''
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker tag $IMAGE_NAME $DOCKER_REPO:latest
+                    docker push $DOCKER_REPO:latest
+                    '''
+                }
             }
         }
 
